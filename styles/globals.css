@@ -1,9 +1,69 @@
+@import url("./reset.css");
+
+:root {
+  /* Icons and illustrations colours */
+
+  --accent-red: #d72727;
+  --accent-blue: #1a6be5;
+  --accent-green: #24ad42;
+  --accent-purple: #5024ad;
+  --accent-yellow: #e89821;
+
+  /* Main colours */
+  --accent-orange: #ff9c41;
+  --primary-300: #2e2e3d;
+  --primary-200: #1a1a24;
+  --primary-100: #111117;
+  --secondary-300: #e8f5fc;
+  --secondary-200: #d1d9de;
+  --secondary-100: #b1c3cc;
+
+  /* Spacings */
+  --spacing-3xs: 0.25rem;
+  --spacing-2xs: 0.43rem;
+  --spacing-xs: 0.75rem;
+  --spacing-s: 1.25rem;
+  --spacing-m: 2rem;
+  --spacing-l: 3.25rem;
+  --spacing-xl: 5.25rem;
+  --spacing-2xl: 8.5rem;
+  --spacing-3xl: 13.75rem;
+
+  /* Typography */
+  --type-small: 0.8rem;
+  --type-label: 0.875rem;
+  --type-body: 1rem;
+  --type-big-body: 1.2rem;
+  --type-h5: 1.4rem;
+  --type-h4: 1.728rem;
+  --type-h3: 2.074rem;
+  --type-h2: 2.488rem;
+  --type-h1: 2.986rem;
+
+  /* font-family */
+  --ff-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  --ff-display: "Josefin Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+
+  /* Font weight */
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  /* Breakpoints Referene*/
+  /* --bp-small: 400px;
+  --bp-medium: 768px;
+  --bp-large: 1200px;
+  --bp-xlarge: 1440px; */
+}
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 0.875em;
+  font-family: var(--ff-main);
 }
 
 a {
@@ -14,13 +74,50 @@ a {
 * {
   box-sizing: border-box;
 }
+.container {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media only screen and (min-width: 1200px) {
+  :root {
+    /* Typography */
+    --type-small: 0.8rem;
+    --type-label: 0.875rem;
+    --type-body: 1rem;
+    --type-big-body: 1.33rem;
+    --type-h5: 1.77rem;
+    --type-h4: 2.369rem;
+    --type-h3: 3.157rem;
+    --type-h2: 4.209rem;
+    --type-h1: 5.61rem;
+  }
+  html,
+  body {
+    font-size: 1em;
+  }
+}
 
 @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+  :root {
+    /* Icons and illustrations colours */
+    --accent-red: #ff4141;
+    --accent-blue: #00a3ff;
+    --accent-green: #42df65;
+    --accent-purple: #703ae1;
+    --accent-yellow: #edc433;
+    --accent-light: #ff9c41;
   }
-  body {
-    color: white;
-    background: black;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Icons and illustrations colours */
+    --accent-red: #d72727;
+    --accent-blue: #1a6be5;
+    --accent-green: #24ad42;
+    --accent-purple: #5024ad;
+    --accent-yellow: #e89821;
+    --accent-light: #d16500;
   }
 }
