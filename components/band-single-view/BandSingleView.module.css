@@ -1,0 +1,51 @@
+.BandView {
+  background-color: var(--primary-300);
+  color: var(--secondary-100);
+  padding-top: var(--spacing-xl);
+}
+
+.BandView > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+  align-items: ce;
+}
+.imgAndBtn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.imgAndBtn > button {
+  width: 7%;
+}
+
+.BandImage {
+  align-self: center;
+}
+.h1AndStar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.BandView > div > div > h1 {
+  font-size: var(--type-big-body);
+  font-weight: var(--fw-bold);
+}
+
+.memberList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+}
+
+.memberList h3 {
+  font-size: var(--type-body);
+  font-weight: var(--fw-bold);
+}
+.memberList > ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
