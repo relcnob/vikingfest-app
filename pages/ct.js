@@ -1,7 +1,7 @@
 import React from "react";
-
+import BandOverview from "../components/band-overview/BandOverview.jsx";
 function ct() {
-  return <div>ct</div>;
+  return <BandOverview />;
 }
 
 export default ct;
