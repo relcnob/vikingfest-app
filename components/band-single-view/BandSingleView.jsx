@@ -2,6 +2,8 @@ import React from "react";
 import Image from "next/image";
 import styles from "./BandSingleView.module.css";
 import MemberCard from "../MemberCard/MemberCard";
+import placeholdImageBandView from "../../public/placeholdImageBandView.png";
+import favourites from "../../public/favouriteIcon.svg";
 
 function BandSingleView(props) {
   return (
@@ -9,12 +11,12 @@ function BandSingleView(props) {
       <div className="container">
         <div className={styles.top}>
           <button>{"<"}</button>
-          <Image alt="" className={styles.BandImage} src="/image.png" width="150" height="150" />
+          <Image alt="" className={styles.BandImage} src={placeholdImageBandView} width="150" height="150" />
         </div>
         <div>
           <div className={styles.title}>
             <h1>{props.bandName}</h1>
-            <Image alt="star" />
+            <Image alt="star" src={favourites} />
           </div>
           <section className={styles.description}>
             <h2>{props.genre}</h2>
