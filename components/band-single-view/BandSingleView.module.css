@@ -8,36 +8,55 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-m);
-  align-items: ce;
 }
-.imgAndBtn {
+.top {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
 }
 
-.imgAndBtn > button {
+.top > button {
   width: 7%;
 }
 
 .BandImage {
   align-self: center;
 }
-.h1AndStar {
+
+.title {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: var(--spacing-2xs);
 }
-.BandView > div > div > h1 {
-  font-size: var(--type-big-body);
+
+.title h1 {
+  color: var(--secondary-300);
+  font-size: var(--type-h5);
   font-weight: var(--fw-bold);
+  line-height: 1;
+}
+
+.description {
+  color: var(--secondary-200);
+}
+
+.description h2 {
+  font-size: var(--type-label);
+  line-height: 1.4;
+  margin-bottom: var(--spacing-s);
+}
+.description p {
+  font-size: var(--type-body);
+  line-height: 1.4;
 }
 
 .memberList {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-s);
+  color: var(--secondary-300);
 }
 
 .memberList h3 {
