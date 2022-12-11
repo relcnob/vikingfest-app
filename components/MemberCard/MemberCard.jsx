@@ -6,7 +6,10 @@ function MemberCard(props) {
   return (
     <article className={styles.memberCard}>
       <Image alt="picture of member" />
-      <h4>{props.members[0]}</h4>
+      <h4>
+        {"<- "}
+        {props.members[0]}
+      </h4>
     </article>
   );
 }
