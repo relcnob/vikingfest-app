@@ -1,0 +1,32 @@
+.button,
+.skipButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  color: var(--primary-200);
+  font-size: var(--type-body);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+  border-radius: var(--spacing-2xs);
+  width: 100%;
+  padding-bottom: 2px;
+}
+
+.button {
+  background-color: var(--accent-orange);
+}
+
+.skipButton {
+  background-color: var(--secondary-300);
+}
+
+.button:hover,
+.skipButton:hover {
+  filter: brightness(1.3);
+}
+
+.button:active,
+.skipButton:active {
+  filter: brightness(0.7);
+}
