@@ -55,7 +55,7 @@
   --bp-xlarge: 1440px; */
 }
 html {
-  background-color: var(--primary-300);
+  background-color: var(--primary-200);
 }
 
 html,
