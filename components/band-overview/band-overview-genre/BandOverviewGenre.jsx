@@ -1,7 +1,8 @@
 import React from "react";
+import Image from "next/image";
 import Anchor from "../../Anchor";
 import styles from "./BandOverviewGenre.module.css";
-
+import imagePlaceholder from "../../../public/imagePlaceholder.png";
 function BandOverviewGenre(props) {
   return (
     <article>
@@ -9,44 +10,44 @@ function BandOverviewGenre(props) {
       <ul className={styles.list}>
         <li>
           <Anchor href="/band">
-            {/* <Image alt="band-name"/> */}
-            <div className={styles.imagePlaceholder}></div>
+            <Image alt="band-name" src={imagePlaceholder} />
+            {/*             <div className={styles.imagePlaceholder}></div> */}
           </Anchor>
         </li>
         <li>
           <Anchor href="/band">
-            {/* <Image alt="band-name"/> */}
-            <div className={styles.imagePlaceholder}></div>
+            <Image alt="band-name" src={imagePlaceholder} />
+            {/*             <div className={styles.imagePlaceholder}></div> */}
           </Anchor>
         </li>
         <li>
           <Anchor href="/band">
-            {/* <Image alt="band-name"/> */}
-            <div className={styles.imagePlaceholder}></div>
+            <Image alt="band-name" src={imagePlaceholder} />
+            {/*             <div className={styles.imagePlaceholder}></div> */}
           </Anchor>
         </li>
         <li>
           <Anchor href="/band">
-            {/* <Image alt="band-name"/> */}
-            <div className={styles.imagePlaceholder}></div>
+            <Image alt="band-name" src={imagePlaceholder} />
+            {/*             <div className={styles.imagePlaceholder}></div> */}
           </Anchor>
         </li>
         <li>
           <Anchor href="/band">
-            {/* <Image alt="band-name"/> */}
-            <div className={styles.imagePlaceholder}></div>
+            <Image alt="band-name" src={imagePlaceholder} />
+            {/*             <div className={styles.imagePlaceholder}></div> */}
           </Anchor>
         </li>
         <li>
           <Anchor href="/band">
-            {/* <Image alt="band-name"/> */}
-            <div className={styles.imagePlaceholder}></div>
+            <Image alt="band-name" src={imagePlaceholder} />
+            {/*             <div className={styles.imagePlaceholder}></div> */}
           </Anchor>
         </li>
         <li>
           <Anchor href="/band">
-            {/* <Image alt="band-name"/> */}
-            <div className={styles.imagePlaceholder}></div>
+            <Image alt="band-name" src={imagePlaceholder} />
+            {/*             <div className={styles.imagePlaceholder}></div> */}
           </Anchor>
         </li>
       </ul>
