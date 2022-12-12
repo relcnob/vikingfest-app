@@ -1,0 +1,34 @@
+.loaderWrapper {
+  display: flex;
+  position: relative;
+  aspect-ratio: 1/1;
+  align-items: center;
+  justify-content: center;
+  max-width: 350px;
+  padding: var(--spacing-m);
+}
+
+.loaderSpinner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: solid var(--spacing-xs) var(--accent-orange);
+  border-radius: 50%;
+  border-top: solid var(--spacing-xs) transparent;
+  box-sizing: border-box;
+  animation: spin 2s linear infinite;
+}
+
+.loaderLogo {
+  max-width: 100%;
+  display: block;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
