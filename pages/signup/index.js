@@ -6,8 +6,6 @@ function index() {
   return (
     <div style={{ background: "var(--primary-300)" }}>
       <SignupForm></SignupForm>
-      <NavBar active="schedule" />
-      <BurgerMenu />
     </div>
   );
 }
