@@ -6,6 +6,7 @@ import placeholdImageBandView from "../../public/placeholdImageBandView.png";
 import favourites from "../../public/favouriteIcon.svg";
 
 function BandSingleView(props) {
+  console.log(props.members);
   return (
     <article className={styles.BandView}>
       <div className="container">
@@ -26,15 +27,12 @@ function BandSingleView(props) {
         <section className={styles.memberList}>
           <h3>Members</h3>
           <ul>
-            <li>
-              <MemberCard members={props.members} />
-            </li>
-            <li>
-              <MemberCard members={props.members} />
-            </li>
-            <li>
-              <MemberCard members={props.members} />
-            </li>
+            {props.members.length &&
+              props.members.map((member) => (
+                <li key={member}>
+                  <MemberCard member={member} />
+                </li>
+              ))}
           </ul>
         </section>
       </div>
