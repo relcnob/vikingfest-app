@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Loader.module.css";
 import Image from "next/image";
 import vikingFestlogo from "../../public/vikingfest.svg";
-import loaderImage from "../../public/loader.svg";
 function Loader() {
   return (
     <div className={styles.loaderWrapper}>
