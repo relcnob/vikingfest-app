@@ -4,20 +4,27 @@ import styles from "./BandSingleView.module.css";
 import MemberCard from "../MemberCard/MemberCard";
 import placeholdImageBandView from "../../public/placeholdImageBandView.png";
 import favourites from "../../public/favouriteIcon.svg";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 function BandSingleView(props) {
-  console.log(props.members);
+  const supabaseClient = useSupabaseClient();
+  // console.log(props.user);
+  async function handleStar(e) {
+    console.log(supabaseClient);
+    const { data, error } = supabaseClient.from("profiles").select("*");
+    console.log(data);
+  }
   return (
     <article className={styles.BandView}>
       <div className="container">
         <div className={styles.top}>
           <button>{"<"}</button>
-          <Image alt="" className={styles.BandImage} src={placeholdImageBandView} width="150" height="150" />
+          <Image alt="" className={styles.BandImage} src={placeholdImageBandView} width="150" height="150" onClick={handleStar} />
         </div>
         <div>
           <div className={styles.title}>
             <h1>{props.bandName}</h1>
-            <Image alt="star" src={favourites} />
+            {props.user && <Image alt="star" src={favourites} />}
           </div>
           <section className={styles.description}>
             <h2>{props.genre}</h2>
