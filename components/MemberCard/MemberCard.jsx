@@ -9,7 +9,7 @@ function MemberCard(props) {
       <Image alt="picture of member" src={memberPlaceholder} />
       <h4>
         {"<- "}
-        {props.members[0]}
+        {props.member}
       </h4>
     </article>
   );
