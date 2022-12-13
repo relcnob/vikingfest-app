@@ -8,9 +8,9 @@ function SingleBandPage(props) {
     </>
   );
 }
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const slug = context.params.slug;
-  const res = await fetch("http://localhost:8080/bands");
+  const res = awaitfetch("http://localhost:8080/bands");
 
   if (res.status !== 200) {
     return {
@@ -19,25 +19,11 @@ export async function getStaticProps(context) {
   }
   const data = await res.json();
 
-  const band = data.filter((bd) => bd.slug === slug);
+  const band = data.filter((entry) => entry.slug === slug);
   return {
     props: {
       data: band[0],
     },
-  };
-}
-
-export async function getStaticPaths() {
-  const res = await fetch("http://localhost:8080/bands");
-  const data = await res.json();
-
-  const paths = data.map((band) => {
-    return { params: { slug: band.slug } };
-  });
-
-  return {
-    paths,
-    fallback: false,
   };
 }
 
