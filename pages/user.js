@@ -1,13 +1,7 @@
-import React from "react";
-import SigninForm from "../../components/forms/signin-form/SigninForm";
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 
-function index({ user }) {
-  return (
-    <div style={{ background: "var(--primary-300)" }}>
-      <SigninForm />
-    </div>
-  );
+export default function Profile({ user }) {
+  return <div>Hello {user.user_metadata.first_name}</div>;
 }
 
 export const getServerSideProps = async (ctx) => {
@@ -18,18 +12,18 @@ export const getServerSideProps = async (ctx) => {
     data: { session },
   } = await supabase.auth.getSession();
 
-  if (!session) {
-    return {
-      props: {},
-    };
-  } else {
+  if (!session)
     return {
       redirect: {
-        destination: "/",
+        destination: "/signin",
         permanent: false,
       },
     };
-  }
-};
 
-export default index;
+  return {
+    props: {
+      initialSession: session,
+      user: session.user,
+    },
+  };
+};

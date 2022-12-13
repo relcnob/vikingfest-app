@@ -22,46 +22,35 @@ const AuthProvider = (props) => {
   }, []);
 
   const loginWithGithub = async () => {
-    try {
-      await supabaseClient.auth.signInWithOAuth({
-        provider: "github",
-      });
-    } catch (e) {
-      console.error(e);
-    }
+    const { data, error } = await supabaseClient.auth.signInWithOAuth({
+      provider: "github",
+    });
+    return data;
   };
 
   const loginWithPassword = async (email, password) => {
-    try {
-      await supabase.auth.signInWithPassword({
-        email: email,
-        password: password,
-      });
-    } catch (e) {
-      console.error(e);
-    }
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+    return data;
   };
 
   const signOut = async () => {
-    try {
-      await supabaseClient.auth.signOut();
-    } catch (e) {
-      console.error(e);
-    }
+    const { data, error } = await supabaseClient.auth.signOut();
+    return data;
   };
 
   const signUpWithPassword = async (email, password, payload) => {
-    try {
-      await supabaseClient.auth.signUp({
-        email: email,
-        password: password,
-        options: {
-          data: payload,
-        },
-      });
-    } catch (e) {
-      console.error(e);
-    }
+    const { data, error } = await supabaseClient.auth.signUp({
+      email: email,
+      password: password,
+      options: {
+        data: payload,
+      },
+    });
+
+    return data;
   };
 
   const value = { auth, loginWithPassword, loginWithGithub, signOut, signUpWithPassword };
