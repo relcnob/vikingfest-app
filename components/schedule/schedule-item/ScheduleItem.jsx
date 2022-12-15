@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import styles from "./BandSingleView.module.css";
-import MemberCard from "../MemberCard/MemberCard";
-import placeholdImageBandView from "../../public/placeholdImageBandView.png";
-import favourites from "../../public/favouriteIcon.svg";
+import { useState, useEffect } from "react";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
-import Star from "../Star";
-function BandSingleView(props) {
+// import { getWatchlist, addToWatchlist, removeFromWatchlist } from "../../../utils/watchlist";
+import Star from "../../Star";
+import s from "./ScheduleItem.module.css";
+
+function ScheduleItem({ act, user }) {
+  // console.log(user);
+  const slug = act.act.trim().toLowerCase().split(" ").join("-").replace("/", "-").replace("'", "").replace("_", "").replace(",", "").replace("--", "-").replace("--", "-");
   const supabase = useSupabaseClient();
-  const user = props.user;
   const [watchlist, setWatchlist] = useState(null);
   const [isStarred, setIsStarred] = useState(false);
   const [currentAction, setCurrentAction] = useState("");
@@ -29,7 +28,7 @@ function BandSingleView(props) {
       // console.log("add");
       const { data, error } = await supabase
         .from("watchlist")
-        .update({ bands: watchlist.concat(props.slug) })
+        .update({ bands: watchlist.concat(slug) })
         .eq("id", user.id);
       setWatchlist(null);
     }
@@ -38,7 +37,7 @@ function BandSingleView(props) {
 
       const { data, error } = await supabase
         .from("watchlist")
-        .update({ bands: watchlist.filter((band) => band !== props.slug) })
+        .update({ bands: watchlist.filter((band) => band !== slug) })
         .eq("id", user.id);
 
       setWatchlist(null);
@@ -58,7 +57,7 @@ function BandSingleView(props) {
           setCurrentAction("");
         }
         if (currentAction === "") {
-          if (watchlist.includes(props.slug)) {
+          if (watchlist.includes(slug)) {
             setIsStarred(true);
           } else {
             setIsStarred(false);
@@ -82,42 +81,45 @@ function BandSingleView(props) {
       setWatchlist(null);
     }
   }
+  function handleDay() {
+    switch (act.day) {
+      case "mon":
+        return "Monday";
+
+      case "tue":
+        return "Tuesday";
+
+      case "wed":
+        return "Wednesday";
+      case "thu":
+        return "Thursday";
+      case "fri":
+        return "Friday";
+      case "sat":
+        return "Saturday";
+      case "sun":
+        return "Sunday";
+    }
+  }
   return (
-    <article className={styles.BandView}>
-      <div className="container">
-        <div className={styles.top}>
-          <button>{"<"}</button>
-          <Image alt="" className={styles.BandImage} src={placeholdImageBandView} width="150" height="150" />
-        </div>
-        <div>
-          <div className={styles.title}>
-            <h1>{props.bandName}</h1>
-            {props.user && (
-              <div className={isStarred ? styles.starYellow : styles.starGrey} onClick={handleStar}>
-                {" "}
-                <Star />{" "}
-              </div>
-            )}
-          </div>
-          <section className={styles.description}>
-            <h2>{props.genre}</h2>
-            <p>{props.description}</p>
-          </section>
-        </div>
-        <section className={styles.memberList}>
-          <h3>Members</h3>
-          <ul>
-            {props.members.length &&
-              props.members.map((member) => (
-                <li key={member}>
-                  <MemberCard member={member} />
-                </li>
-              ))}
-          </ul>
-        </section>
+    <article className={s.item}>
+      <div>
+        <h2 className={s.topText}>{act.act}</h2>
+        <span className={s.bottomText}>
+          {act.stage} | {(Number(act.end.split(":")[0]) - Number(act.start.split(":")[0])) * 60} minutes
+        </span>
       </div>
+      <div className={`${s.specs} ${s[act.stage]}`}>
+        <span className={s.topText}>{handleDay()}</span>
+        <span className={s.bottomText}>{act.start}</span>
+      </div>
+      {user && (
+        <div className={isStarred ? s.starYellow : s.starGrey} onClick={handleStar}>
+          <Star />
+        </div>
+      )}
     </article>
   );
 }
 
-export default BandSingleView;
+export default ScheduleItem;
