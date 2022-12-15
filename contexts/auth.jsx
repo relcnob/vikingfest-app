@@ -53,7 +53,7 @@ const AuthProvider = (props) => {
     return data;
   };
 
-  const value = { auth, loginWithPassword, loginWithGithub, signOut, signUpWithPassword };
+  const value = { auth, loginWithPassword, loginWithGithub, signOut, signUpWithPassword, supabaseClient };
 
   return <AuthContext.Provider value={value} {...props} />;
 };

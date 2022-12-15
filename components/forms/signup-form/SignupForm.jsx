@@ -4,7 +4,7 @@ import Anchor from "../../Anchor";
 import { useContext } from "react";
 import { useAuth } from "../../../hooks/useAuth";
 function SignupForm() {
-  const { signUpWithPassword } = useAuth();
+  const { signUpWithPassword, loginWithGithub } = useAuth();
   function handleSubmit(e) {
     e.preventDefault();
     const theForm = e.target;
@@ -22,6 +22,11 @@ function SignupForm() {
     }
     console.log(payload, email, password);
     signUpWithPassword(email, password, payload);
+  }
+
+  function handleGitHub(e) {
+    e.preventDefault();
+    loginWithGithub();
   }
 
   return (
@@ -49,9 +54,11 @@ function SignupForm() {
         </div> */}
       </section>
       <section className={formStyles.formInteractions}>
-        <button>Signup</button>
-        <Anchor className={styles.button}>Sign Up</Anchor>
-        <Anchor className={styles.githubButton}>Sign Up with GitHub</Anchor>
+        <button className={styles.button}>Sign up</button>
+        <button className={styles.githubButton} onClick={handleGitHub}>
+          Sign up with GitHub
+        </button>
+
         <span>
           <p>Already Signed Up?</p>
           <Anchor>Sign in here</Anchor>

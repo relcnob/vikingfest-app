@@ -68,3 +68,13 @@
   flex-direction: column;
   gap: var(--spacing-xs);
 }
+.starYellow {
+  color: var(--accent-yellow);
+}
+.starGrey {
+  color: var(--secondary-100);
+}
+.starYellow *,
+.starGrey * {
+  pointer-events: none;
+}
