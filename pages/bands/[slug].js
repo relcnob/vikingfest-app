@@ -6,7 +6,7 @@ import BandSingleView from "../../components/band-single-view/BandSingleView";
 function SingleBandPage(props) {
   return (
     <>
-      <BandSingleView user={props.user} bandName={props.data.name} genre={props.data.genre} description={props.data.bio} members={props.data.members} />
+      <BandSingleView user={props.user} bandName={props.data.name} genre={props.data.genre} description={props.data.bio} members={props.data.members} slug={props.slug} />
     </>
   );
 }
@@ -40,6 +40,7 @@ export async function getServerSideProps(context) {
       data: band[0],
       initialSession: session,
       user: session.user,
+      slug: slug,
     },
   };
 }
