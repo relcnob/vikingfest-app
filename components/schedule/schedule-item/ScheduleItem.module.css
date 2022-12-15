@@ -3,6 +3,7 @@
   gap: var(--spacing-s);
   padding-bottom: var(--spacing-s);
   position: relative;
+  padding-right: var(--spacing-2xs);
 }
 .item::after {
   content: "";
@@ -44,7 +45,16 @@
   color: var(--accent-orange);
   font-weight: 700;
 }
-
+.starYellow {
+  color: var(--accent-yellow);
+}
+.starGrey {
+  color: var(--secondary-100);
+}
+.starGrey,
+.starYellow {
+  margin-left: auto;
+}
 @media only screen and (min-width: 1200px) {
   .item {
     font-size: var(--type-body);

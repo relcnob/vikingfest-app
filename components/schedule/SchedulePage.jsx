@@ -63,7 +63,7 @@ function SchedulePage({ schedule, user, initialSession }) {
         </label>
       </section>
       <section className={s.actList}>
-        <ul>{inDisplay.map((item) => item.act !== "break" && <ScheduleItem act={item} key={item.act} />)}</ul>
+        <ul>{inDisplay.map((item) => item.act !== "break" && <ScheduleItem act={item} key={item.act} user={user} />)}</ul>
       </section>
       <div className={s.stageFilters}>
         <ul>
