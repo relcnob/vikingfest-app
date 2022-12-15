@@ -1,0 +1,82 @@
+.page {
+  padding-inline: 1rem;
+  padding-top: 4rem;
+  padding-bottom: 8rem;
+  color: var(--secondary-300);
+  max-width: 900px;
+  margin-inline: auto;
+}
+.page h1 {
+  font-size: var(--type-h3);
+  font-weight: 700;
+  padding-bottom: var(--spacing-s);
+}
+.header {
+  padding-bottom: var(--spacing-s);
+}
+.header label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xs);
+}
+.header select {
+  font-size: var(--type-label);
+  height: 3rem;
+  border-radius: 6px;
+  padding-left: 1rem;
+}
+
+.actList {
+  padding-block: var(--spacing-s);
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.actList ul {
+  display: flex;
+  gap: var(--spacing-m);
+  flex-direction: column;
+}
+.stageFilters {
+  position: fixed;
+  inset: auto 0 0;
+  background-color: var(--primary-100);
+  padding-inline: 1rem;
+  padding-block: var(--spacing-s) 6rem;
+}
+.stageFilters ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-2xs);
+  max-width: 900px;
+  margin-inline: auto;
+}
+.stageFilters button {
+  width: 100%;
+  border-radius: 100px;
+  padding-block: var(--spacing-2xs);
+  font-weight: 700;
+}
+.Midgard {
+  background-color: var(--accent-purple);
+  color: var(--secondary-300);
+}
+.Vanaheim {
+  background-color: var(--accent-red);
+  color: var(--secondary-300);
+}
+.Jotunheim {
+  background-color: var(--accent-green);
+  color: var(--primary-100);
+}
+.stageFilters .active {
+  outline: 2px solid white;
+}
+
+@media only screen and (min-width: 1200px) {
+  .header select {
+    font-size: var(--type-body);
+    height: 3rem;
+    border-radius: 6px;
+    padding-left: 1rem;
+  }
+}

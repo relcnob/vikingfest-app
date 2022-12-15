@@ -5,7 +5,7 @@ import MemberCard from "../MemberCard/MemberCard";
 import placeholdImageBandView from "../../public/placeholdImageBandView.png";
 import favourites from "../../public/favouriteIcon.svg";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
-import Star from "./Star";
+import Star from "../Star";
 function BandSingleView(props) {
   const supabase = useSupabaseClient();
   const user = props.user;

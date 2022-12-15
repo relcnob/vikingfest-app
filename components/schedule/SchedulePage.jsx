@@ -1,23 +1,42 @@
 import { useState, useEffect } from "react";
 import ScheduleItem from "./schedule-item/ScheduleItem";
-import s from "./SchedulePage.css";
+import s from "./SchedulePage.module.css";
 
 function SchedulePage({ schedule, user, initialSession }) {
-  const [chosenDay, setChosenDay] = useState("mon");
+  const weekday = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+
+  const [chosenDay, setChosenDay] = useState(weekday[new Date().getDay()]);
   const [inDisplay, setInDisplay] = useState([]);
   const [currentStage, setCurrentStage] = useState("all");
+
   const stages = Object.keys(schedule);
   useEffect(() => {
-    console.log(currentStage);
     if (currentStage === "all") {
       const acts = [];
       stages.forEach((item) => {
-        acts.push(schedule[item][chosenDay]);
+        acts.push(
+          schedule[item][chosenDay].map((each) => {
+            return { ...each, stage: item, day: chosenDay };
+          })
+        );
       });
-      //   console.log(acts.flat());
-      setInDisplay(acts.flat());
+      const sortedActs = acts.flat().sort((a, b) => {
+        const startA = Number(a.start.split(":")[0]);
+        const startB = Number(b.start.split(":")[0]);
+        if (startA < startB) {
+          return -1;
+        } else if (startA > startB) {
+          return 1;
+        }
+        return 0;
+      });
+      setInDisplay(sortedActs);
     } else {
-      setInDisplay(schedule[currentStage][chosenDay]);
+      setInDisplay(
+        schedule[currentStage][chosenDay].map((each) => {
+          return { ...each, stage: currentStage, day: chosenDay };
+        })
+      );
     }
   }, [currentStage, chosenDay]);
   function handleStageFilter(stage) {
@@ -46,11 +65,13 @@ function SchedulePage({ schedule, user, initialSession }) {
       <section className={s.actList}>
         <ul>{inDisplay.map((item) => item.act !== "break" && <ScheduleItem act={item} key={item.act} />)}</ul>
       </section>
-      <div>
+      <div className={s.stageFilters}>
         <ul>
           {stages.map((stage) => (
             <li key={stage}>
-              <button onClick={() => handleStageFilter(stage)}>{stage}</button>
+              <button className={`${currentStage === stage ? s.active : ""} ${s[stage]}`} onClick={() => handleStageFilter(stage)}>
+                {stage}
+              </button>
             </li>
           ))}
         </ul>
