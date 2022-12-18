@@ -5,7 +5,7 @@ import styles from "./BandOverview.module.css";
 import BandOverviewGenre from "./band-overview-genre/BandOverviewGenre";
 function BandOverview() {
   return (
-    <section>
+    <section className={styles.section}>
       <div className="container">
         <BandOverviewGenre genre="Alternative Rock" />
         <BandOverviewGenre genre="Rock" />
