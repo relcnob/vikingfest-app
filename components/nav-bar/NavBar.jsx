@@ -35,15 +35,15 @@ function NavBar(props) {
   return (
     <section className={styles.navbarWrapper}>
       <div className={styles.navbar}>
-        <Anchor className={styles[bandsClass]} href="#">
+        <Anchor className={styles[bandsClass]} href="bands">
           <Image src={bandsIcon} alt="drum icon"></Image>
           <p>Bands</p>
         </Anchor>
-        <Anchor className={styles[scheduleClass]}>
+        <Anchor className={styles[scheduleClass]} href="schedule">
           <Image src={scheduleIcon} alt="schedule icon"></Image>
           <p>Schedule</p>
         </Anchor>
-        <Anchor className={styles[favoritesClass]} href="#">
+        <Anchor className={styles[favoritesClass]} href="favorites">
           <Image src={favoritesIcon} alt="star icon"></Image>
           <p>Favorites</p>
         </Anchor>

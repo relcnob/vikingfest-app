@@ -21,7 +21,7 @@ function BandOverview(props) {
   }
   filter(); */
   return (
-    <section>
+    <section className={styles.section}>
       <div className="container">
         <BandOverviewGenre data={props.data}></BandOverviewGenre>
       </div>
