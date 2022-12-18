@@ -6,9 +6,7 @@ function BurgerMenu() {
   const [menuState, setMenuState] = useState("inactive");
 
   function updateState() {
-    menuState === "inactive"
-      ? setMenuState("active")
-      : setMenuState("inactive");
+    menuState === "inactive" ? setMenuState("active") : setMenuState("inactive");
   }
 
   return (

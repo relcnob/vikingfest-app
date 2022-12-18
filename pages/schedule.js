@@ -1,9 +1,13 @@
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import SchedulePage from "../components/schedule/SchedulePage";
+import BurgerMenu from "../components/burger-menu/BurgerMenu";
+import NavBar from "../components/nav-bar/NavBar";
 export default function schedule(props) {
   return (
     <>
       <SchedulePage schedule={props.schedule} user={props.user} initialSession={props.initialSession} />
+      <NavBar active="schedule"></NavBar>
+      <BurgerMenu></BurgerMenu>
     </>
   );
 }

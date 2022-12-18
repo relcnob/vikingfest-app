@@ -11,7 +11,7 @@ function BandOverviewGenre(props) {
         {props.data.map((band) => {
           return (
             <li key={band.slug}>
-              <Anchor href="/band">
+              <Anchor href="/slug">
                 <Image alt="band-name" src={imagePlaceholder} />
                 <h2 className={styles.bandh1}>{band.name}</h2>
               </Anchor>

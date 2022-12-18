@@ -1,7 +1,7 @@
 import React from "react";
 import BurgerMenu from "../components/burger-menu/BurgerMenu";
-import Loader from "../components/loader/Loader";
 import NavBar from "../components/nav-bar/NavBar";
+import Loader from "../components/loader/Loader";
 function fb() {
   return (
     <div>
