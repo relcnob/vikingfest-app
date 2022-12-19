@@ -3,20 +3,40 @@
   gap: var(--spacing-s);
   /* not sure about this overflow */
   overflow-x: scroll;
+  overflow-y: hidden;
+  /* scrollbar */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  border-right: solid 5px #ff9c41;
+  position: relative;
 }
 
-.h1 {
+.header {
   font-size: var(--type-h5);
   color: var(--secondary-300);
   line-height: 1.3;
   margin-bottom: var(--spacing-s);
   margin-top: var(--spacing-m);
+  font-family: var(--ff-display);
+  width: 100%;
+  position: relative;
 }
 
-.imagePlaceholder {
-  content: "";
-  width: 120px;
-  height: 80px;
-  background-color: red;
-  border-radius: 6px;
+.header:after {
+  content: ">";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent-orange);
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  border-radius: var(--spacing-3xs);
+  font-size: var(--type-body);
+  padding: var(--spacing-3xs);
+  box-sizing: border-box;
+  transform-origin: center;
 }

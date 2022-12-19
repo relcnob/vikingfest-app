@@ -6,7 +6,15 @@ import BandSingleView from "../../components/band-single-view/BandSingleView";
 function SingleBandPage(props) {
   return (
     <>
-      <BandSingleView user={props.user} bandName={props.data.name} genre={props.data.genre} description={props.data.bio} members={props.data.members} slug={props.slug} />
+      <BandSingleView
+        user={props.user}
+        bandName={props.data.name}
+        genre={props.data.genre}
+        description={props.data.bio}
+        members={props.data.members}
+        slug={props.slug}
+        logo={props.data.logo}
+      />
     </>
   );
 }

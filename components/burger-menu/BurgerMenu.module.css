@@ -3,6 +3,7 @@
   top: var(--spacing-s);
   right: var(--spacing-s);
   color: var(--secondary-100);
+  z-index: 999;
 }
 
 .burgerIcon {
@@ -14,6 +15,7 @@
   z-index: 10;
   display: flex;
   gap: var(--spacing-2xs);
+  cursor: pointer;
 }
 
 .burgerIcon span {
@@ -49,6 +51,11 @@
   transform-origin: left;
 }
 
+.burgerIcon.active {
+  position: fixed;
+  top: var(--spacing-s);
+  right: var(--spacing-s);
+}
 .navWrapper {
   width: 100%;
   height: 100%;
@@ -89,6 +96,11 @@
 
 @media screen and (min-width: 768px) {
   .burgerWrapper {
+    top: var(--spacing-m);
+    right: var(--spacing-m);
+  }
+  .burgerIcon.active {
+    position: fixed;
     top: var(--spacing-m);
     right: var(--spacing-m);
   }
