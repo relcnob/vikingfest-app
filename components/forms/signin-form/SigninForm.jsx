@@ -23,7 +23,7 @@ function SigninForm() {
     if (!data.user) {
       console.log("Wrong credentials");
     } else {
-      Router.push("/");
+      Router.push("/schedule");
     }
   }
   async function handleGithub(e) {

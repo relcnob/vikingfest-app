@@ -3,8 +3,6 @@ import { useAuth } from "../hooks/useAuth";
 import Image from "next/image";
 import vikingfestlogo from "../public/vikingfest.svg";
 import styles from "../components/index.module.css";
-import SigninForm from "../components/forms/signin-form/SigninForm";
-import SchedulePage from "../components/schedule/SchedulePage";
 import Anchor from "../components/Anchor";
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { redirect } from "next/dist/server/api-utils";
@@ -13,7 +11,7 @@ export default function Home() {
 
   /* Not needed as redirecting happens */
 
-  return (
+  /*   return (
     <div className={styles.index}>
       <div>
         <Image src={vikingfestlogo} alt="logo" className={styles.logo}></Image>
@@ -39,7 +37,7 @@ export default function Home() {
         )}
       </div>
     </div>
-  );
+  ); */
 }
 
 export const getServerSideProps = async (ctx) => {
@@ -57,13 +55,13 @@ export const getServerSideProps = async (ctx) => {
         permanent: false,
       },
     };
-  /*   else if (session)
+  else if (session)
     return {
       redirect: {
         destination: "/schedule",
         permanet: false,
       },
-    }; */
+    };
 
   return {
     props: {
