@@ -1,14 +1,15 @@
 import styles from "./BurgerMenu.module.css";
 import Anchor from "../Anchor";
 import { useState } from "react";
+import { useAuth } from "../../hooks/useAuth";
+import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 
 function BurgerMenu() {
   const [menuState, setMenuState] = useState("inactive");
+  const { signOut, auth } = useAuth();
 
   function updateState() {
-    menuState === "inactive"
-      ? setMenuState("active")
-      : setMenuState("inactive");
+    menuState === "inactive" ? setMenuState("active") : setMenuState("inactive");
   }
 
   return (
@@ -38,6 +39,7 @@ function BurgerMenu() {
             <Anchor href="#">Contact</Anchor>
           </li>
         </ul>
+        <button onClick={() => signOut()}>Signout</button>
       </nav>
     </section>
   );

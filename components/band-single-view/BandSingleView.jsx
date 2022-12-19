@@ -87,15 +87,14 @@ function BandSingleView(props) {
       <div className="container">
         <div className={styles.top}>
           <button>{"<"}</button>
-          <Image alt="" className={styles.BandImage} src={placeholdImageBandView} width="150" height="150" />
+          <Image alt="" className={styles.BandImage} src={props.image.includes("http") ? props.image : `http://localhost:8080/logos/${props.image}`} width="150" height="150" />
         </div>
         <div>
           <div className={styles.title}>
             <h1>{props.bandName}</h1>
             {props.user && (
               <div className={isStarred ? styles.starYellow : styles.starGrey} onClick={handleStar}>
-                {" "}
-                <Star />{" "}
+                <Star />
               </div>
             )}
           </div>
