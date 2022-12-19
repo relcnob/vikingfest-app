@@ -93,7 +93,7 @@ function BandSingleView(props) {
   return (
     <>
       <BurgerMenu></BurgerMenu>
-      <NavBar></NavBar>
+      <NavBar active="bands"></NavBar>
       <article className={styles.BandView}>
         <div className="container">
           <div className={styles.top}>
