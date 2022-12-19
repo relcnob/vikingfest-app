@@ -2,12 +2,14 @@
 
 :root {
   /* Icons and illustrations colours */
-
-  --accent-red: #d72727;
-  --accent-blue: #1a6be5;
   --accent-green: #24ad42;
-  --accent-purple: #5024ad;
-  --accent-yellow: #e89821;
+  --accent-teal: #13b7c8;
+  --accent-blue: #1161ed;
+  --accent-purple: #7427aa;
+  --accent-yellow: #e3b11b;
+  --accent-orange-2: #ff6c00;
+  --accent-red: #f61944;
+  --accent-pink: #e051ad;
 
   /* Main colours */
   --accent-orange: #ff9c41;
@@ -41,8 +43,12 @@
   --type-h1: 2.986rem;
 
   /* font-family */
-  --ff-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  --ff-display: "Josefin Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --ff-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  --ff-display: "Josefin Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
 
   /* Font weight */
   --fw-medium: 500;
