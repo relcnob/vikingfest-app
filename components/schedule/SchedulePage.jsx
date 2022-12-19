@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import BurgerMenu from "../burger-menu/BurgerMenu";
 import ScheduleItem from "./schedule-item/ScheduleItem";
 import s from "./SchedulePage.module.css";
-
+import NavBar from "../nav-bar/NavBar";
 function SchedulePage({ schedule, user, initialSession }) {
   const weekday = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
@@ -47,36 +48,55 @@ function SchedulePage({ schedule, user, initialSession }) {
     setCurrentStage("all");
   }
   return (
-    <div className={s.page}>
-      <section className={s.header}>
-        <h1>Schedule</h1>
-        <label>
-          Select day of the week
-          <select value={chosenDay} onChange={(e) => setChosenDay(e.target.value)}>
-            <option value="mon">Monday</option>
-            <option value="tue">Tuesday</option>
-            <option value="wed">Wednesday</option>
-            <option value="thu">Thursday</option>
-            <option value="fri">Friday</option>
-            <option value="sat">Sunday</option>
-          </select>
-        </label>
-      </section>
-      <section className={s.actList}>
-        <ul>{inDisplay.map((item) => item.act !== "break" && <ScheduleItem act={item} key={item.act} user={user} />)}</ul>
-      </section>
-      <div className={s.stageFilters}>
-        <ul>
-          {stages.map((stage) => (
-            <li key={stage}>
-              <button className={`${currentStage === stage ? s.active : ""} ${s[stage]}`} onClick={() => handleStageFilter(stage)}>
-                {stage}
-              </button>
-            </li>
-          ))}
-        </ul>
+    <>
+      <NavBar active="schedule"></NavBar>
+      <BurgerMenu></BurgerMenu>
+      <div className={s.page}>
+        <section className={s.header}>
+          <h1>Schedule</h1>
+          <label>
+            Select day of the week
+            <select
+              value={chosenDay}
+              onChange={(e) => setChosenDay(e.target.value)}
+            >
+              <option value="mon">Monday</option>
+              <option value="tue">Tuesday</option>
+              <option value="wed">Wednesday</option>
+              <option value="thu">Thursday</option>
+              <option value="fri">Friday</option>
+              <option value="sat">Sunday</option>
+            </select>
+          </label>
+        </section>
+        <section className={s.actList}>
+          <ul>
+            {inDisplay.map(
+              (item) =>
+                item.act !== "break" && (
+                  <ScheduleItem act={item} key={item.act} user={user} />
+                )
+            )}
+          </ul>
+        </section>
+        <div className={s.stageFilters}>
+          <ul>
+            {stages.map((stage) => (
+              <li key={stage}>
+                <button
+                  className={`${currentStage === stage ? s.active : ""} ${
+                    s[stage]
+                  }`}
+                  onClick={() => handleStageFilter(stage)}
+                >
+                  {stage}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
