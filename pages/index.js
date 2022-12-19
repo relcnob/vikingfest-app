@@ -7,22 +7,34 @@ import SigninForm from "../components/forms/signin-form/SigninForm";
 import SchedulePage from "../components/schedule/SchedulePage";
 import Anchor from "../components/Anchor";
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
-
+import { redirect } from "next/dist/server/api-utils";
 export default function Home() {
   const { signOut, auth } = useAuth();
-  function showSchedule() {}
+
+  /* Not needed as redirecting happens */
+
   return (
     <div className={styles.index}>
-      <Image src={vikingfestlogo} alt="logo" className={styles.logo}></Image>
       <div>
+        <Image src={vikingfestlogo} alt="logo" className={styles.logo}></Image>
+
         {auth?.user ? (
-          <>
+          <div className={styles.signedInSection}>
             <button onClick={() => signOut()}>Signout</button>
-            <Anchor href="schedule">View SchedulePage</Anchor>
-          </>
+            <Anchor className={styles.button} href="schedule">
+              View Schedule Page
+            </Anchor>
+          </div>
         ) : (
           <>
-            <SigninForm />
+            <Image src={vikingfestlogo} alt="logo" className={styles.logo}></Image>
+
+            <Anchor className={styles.button} href="signin">
+              Sign In
+            </Anchor>
+            <Anchor className={styles.signUpButton} href="signup">
+              Sign Up
+            </Anchor>
           </>
         )}
       </div>
@@ -38,13 +50,20 @@ export const getServerSideProps = async (ctx) => {
     data: { session },
   } = await supabase.auth.getSession();
 
-  if (session)
+  if (!session)
     return {
       redirect: {
-        destination: "/schedule",
+        destination: "/signin",
         permanent: false,
       },
     };
+  /*   else if (session)
+    return {
+      redirect: {
+        destination: "/schedule",
+        permanet: false,
+      },
+    }; */
 
   return {
     props: {
