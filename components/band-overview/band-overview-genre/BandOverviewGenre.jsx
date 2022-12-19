@@ -1,55 +1,21 @@
 import React from "react";
-import Image from "next/image";
-import Anchor from "../../Anchor";
 import styles from "./BandOverviewGenre.module.css";
-import imagePlaceholder from "../../../public/imagePlaceholder.png";
+import BandOverviewItem from "./band-overview-item/BandOverviewItem";
 function BandOverviewGenre(props) {
   return (
     <article>
-      <h1 className={styles.h1}>{props.genre}</h1>
+      <h1 className={styles.header}>{props.genre}</h1>
       <ul className={styles.list}>
-        <li>
-          <Anchor href="/band">
-            <Image alt="band-name" src={imagePlaceholder} />
-            {/*             <div className={styles.imagePlaceholder}></div> */}
-          </Anchor>
-        </li>
-        <li>
-          <Anchor href="/band">
-            <Image alt="band-name" src={imagePlaceholder} />
-            {/*             <div className={styles.imagePlaceholder}></div> */}
-          </Anchor>
-        </li>
-        <li>
-          <Anchor href="/band">
-            <Image alt="band-name" src={imagePlaceholder} />
-            {/*             <div className={styles.imagePlaceholder}></div> */}
-          </Anchor>
-        </li>
-        <li>
-          <Anchor href="/band">
-            <Image alt="band-name" src={imagePlaceholder} />
-            {/*             <div className={styles.imagePlaceholder}></div> */}
-          </Anchor>
-        </li>
-        <li>
-          <Anchor href="/band">
-            <Image alt="band-name" src={imagePlaceholder} />
-            {/*             <div className={styles.imagePlaceholder}></div> */}
-          </Anchor>
-        </li>
-        <li>
-          <Anchor href="/band">
-            <Image alt="band-name" src={imagePlaceholder} />
-            {/*             <div className={styles.imagePlaceholder}></div> */}
-          </Anchor>
-        </li>
-        <li>
-          <Anchor href="/band">
-            <Image alt="band-name" src={imagePlaceholder} />
-            {/*             <div className={styles.imagePlaceholder}></div> */}
-          </Anchor>
-        </li>
+        {props.data.map((band) => {
+          return (
+            <BandOverviewItem
+              name={band.name}
+              slug={band.slug}
+              key={band.slug}
+              logo={band.logo}
+            ></BandOverviewItem>
+          );
+        })}
       </ul>
     </article>
   );

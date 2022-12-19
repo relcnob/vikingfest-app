@@ -5,7 +5,10 @@ import MemberCard from "../MemberCard/MemberCard";
 import placeholdImageBandView from "../../public/placeholdImageBandView.png";
 import favourites from "../../public/favouriteIcon.svg";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import Anchor from "../Anchor";
 import Star from "../Star";
+import BurgerMenu from "../burger-menu/BurgerMenu";
+import NavBar from "../nav-bar/NavBar";
 function BandSingleView(props) {
   const supabase = useSupabaseClient();
   const user = props.user;
@@ -16,9 +19,13 @@ function BandSingleView(props) {
   // Populate profileData
   useEffect(() => {
     async function getWatchlist() {
-      const { data, error } = await supabase.from("profiles").select("id, watchlist(bands)");
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("id, watchlist(bands)");
       if (!error) {
-        setWatchlist(data.filter((entry) => entry.id === user.id)[0].watchlist.bands);
+        setWatchlist(
+          data.filter((entry) => entry.id === user.id)[0].watchlist.bands
+        );
 
         // setIsStarred(profileData.watchlist.bands.includes(props.slug));
       } else {
@@ -82,41 +89,61 @@ function BandSingleView(props) {
       setWatchlist(null);
     }
   }
+  console.log(props);
   return (
-    <article className={styles.BandView}>
-      <div className="container">
-        <div className={styles.top}>
-          <button>{"<"}</button>
-          <Image alt="" className={styles.BandImage} src={placeholdImageBandView} width="150" height="150" />
-        </div>
-        <div>
-          <div className={styles.title}>
-            <h1>{props.bandName}</h1>
-            {props.user && (
-              <div className={isStarred ? styles.starYellow : styles.starGrey} onClick={handleStar}>
-                {" "}
-                <Star />{" "}
-              </div>
-            )}
+    <>
+      <BurgerMenu></BurgerMenu>
+      <NavBar></NavBar>
+      <article className={styles.BandView}>
+        <div className="container">
+          <div className={styles.top}>
+            <Anchor href="/bands" className={styles.backbutton}>
+              {"<-"}
+            </Anchor>
+            <Image
+              alt=""
+              className={styles.BandImage}
+              src={
+                props.logo.includes("http")
+                  ? props.logo
+                  : `${serverUrl}/logos/${props.logo}`
+              }
+              width="250"
+              height="250"
+            />
           </div>
-          <section className={styles.description}>
-            <h2>{props.genre}</h2>
-            <p>{props.description}</p>
+          <div>
+            <div className={styles.title}>
+              <h1>{props.bandName}</h1>
+              {props.user && (
+                <div
+                  className={isStarred ? styles.starYellow : styles.starGrey}
+                  onClick={handleStar}
+                >
+                  {" "}
+                  <Star />{" "}
+                </div>
+              )}
+            </div>
+            <section className={styles.description}>
+              <h2 className={`${styles[props.genre]}`}>{props.genre}</h2>
+              <p>{props.description}</p>
+            </section>
+          </div>
+          <section className={styles.memberList}>
+            <h3>Members</h3>
+            <ul>
+              {props.members.length &&
+                props.members.map((member) => (
+                  <li key={member}>
+                    <MemberCard member={member} />
+                  </li>
+                ))}
+            </ul>
           </section>
         </div>
-        <section className={styles.memberList}>
-          <h3>Members</h3>
-          <ul>
-            {props.members.length &&
-              props.members.map((member) => (
-                <li key={member}>
-                  <MemberCard member={member} />
-                </li>
-              ))}
-          </ul>
-        </section>
-      </div>
-    </article>
+      </article>
+    </>
   );
 }
 
