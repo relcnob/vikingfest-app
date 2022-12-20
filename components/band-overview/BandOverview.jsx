@@ -35,6 +35,7 @@ function BandOverview(props) {
       <BurgerMenu></BurgerMenu>
       <NavBar active="bands"></NavBar>
       <div className={styles.container}>
+        <h1>BANDS</h1>
         <BandOverviewGenre genre="Country" data={countryArr} />
         <BandOverviewGenre genre="Electronic" data={electronicArr} />
         <BandOverviewGenre genre="Pop" data={popArr} />

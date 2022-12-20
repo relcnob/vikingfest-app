@@ -6,3 +6,15 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.container > h1 {
+  font-family: var(--ff-display);
+  color: var(--secondary-300);
+  font-size: var(--type-h3);
+}
+
+@media only screen and (min-width: 768px) {
+  .container > h1 {
+    margin-top: var(--spacing-l);
+  }
+}
