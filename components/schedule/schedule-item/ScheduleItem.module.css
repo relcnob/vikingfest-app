@@ -36,10 +36,10 @@
   background-color: var(--accent-red);
 }
 .specs.Midgard::before {
-  background-color: var(--accent-purple);
+  background-color: var(--accent-yellow);
 }
 .specs.Jotunheim::before {
-  background-color: var(--accent-green);
+  background-color: var(--accent-blue);
 }
 .bottomText {
   color: var(--accent-orange);

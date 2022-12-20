@@ -109,25 +109,12 @@ button {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Icons and illustrations colours */
-    --accent-red: #ff4141;
-    --accent-blue: #00a3ff;
-    --accent-green: #42df65;
-    --accent-purple: #703ae1;
-    --accent-yellow: #edc433;
-    --accent-light: #ff9c41;
-  }
-}
-@media (prefers-color-scheme: light) {
-  :root {
-    /* Icons and illustrations colours */
-    --accent-red: #d72727;
-    --accent-blue: #1a6be5;
-    --accent-green: #24ad42;
-    --accent-purple: #5024ad;
-    --accent-yellow: #e89821;
-    --accent-light: #d16500;
-  }
+.festivalMapWrapper {
+  padding: var(--spacing-s);
+  border: solid 1px var(--primary-300);
+  box-sizing: border-box;
+  max-width: 96%;
+  margin: auto;
+  margin-top: var(--spacing-xl);
+  border-radius: var(--spacing-s);
 }

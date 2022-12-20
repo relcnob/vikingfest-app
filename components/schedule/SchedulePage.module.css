@@ -55,21 +55,27 @@
   border-radius: 100px;
   padding-block: var(--spacing-2xs);
   font-weight: 700;
+  font-size: var(--type-body);
 }
 .Midgard {
-  background-color: var(--accent-purple);
-  color: var(--secondary-300);
+  background-color: var(--accent-yellow);
+  color: var(--primary-100);
 }
 .Vanaheim {
   background-color: var(--accent-red);
-  color: var(--secondary-300);
+  color: var(--primary-100);
 }
 .Jotunheim {
-  background-color: var(--accent-green);
+  background-color: var(--accent-blue);
   color: var(--primary-100);
 }
 .stageFilters .active {
   outline: 2px solid white;
+}
+@media only screen and (min-width: 768px) {
+  .header {
+    margin-top: var(--spacing-l);
+  }
 }
 
 @media only screen and (min-width: 1200px) {
