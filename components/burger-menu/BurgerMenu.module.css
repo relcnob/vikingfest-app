@@ -4,6 +4,7 @@
   right: var(--spacing-s);
   color: var(--secondary-100);
   z-index: 999;
+  width: calc(100% - var(--spacing-m));
 }
 
 .burgerIcon {
@@ -94,6 +95,15 @@
   transform: translateX(120%);
 }
 
+.logotype {
+  position: absolute;
+  font-family: var(--ff-display);
+  left: 0;
+  z-index: 100;
+  color: var(--accent-orange);
+  font-size: var(--type-big-body);
+}
+
 @media screen and (min-width: 768px) {
   .burgerWrapper {
     top: var(--spacing-m);
@@ -103,5 +113,8 @@
     position: fixed;
     top: var(--spacing-m);
     right: var(--spacing-m);
+  }
+  .logotype {
+    left: var(--spacing-m);
   }
 }

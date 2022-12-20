@@ -23,19 +23,58 @@ function BurgerMenu() {
         <span></span>
         <span></span>
       </div>
+      <Anchor className={styles.logotype} href="/">
+        VIKINGfest
+      </Anchor>
       <nav className={`${styles.navWrapper} ${styles[menuState]}`}>
         <ul>
-          <li className={styles.navItem}>
-            <Anchor href="#">My Ticket</Anchor>
+          <li
+            className={styles.navItem}
+            onClick={() => {
+              updateState();
+            }}
+          >
+            <Anchor href="/schedule">Schedule</Anchor>
           </li>
-          <li className={styles.navItem}>
-            <Anchor href="#">Festival Map</Anchor>
+          <li
+            className={styles.navItem}
+            onClick={() => {
+              updateState();
+            }}
+          >
+            <Anchor href="/bands">Bands</Anchor>
           </li>
-          <li className={styles.navItem}>
-            <Anchor href="#">Account</Anchor>
+          <li
+            className={styles.navItem}
+            onClick={() => {
+              updateState();
+            }}
+          >
+            <Anchor href="/festivalmap">Festival Map</Anchor>
           </li>
-          <li className={styles.navItem}>
-            <Anchor href="#">Contact</Anchor>
+          <li
+            className={styles.navItem}
+            onClick={() => {
+              updateState();
+            }}
+          >
+            <Anchor href="mailto:contact@vikingfest.io">Contact</Anchor>
+          </li>
+          <li
+            className={styles.navItem}
+            onClick={() => {
+              updateState();
+            }}
+          >
+            <Anchor href="/festivalmap">Log Out</Anchor>
+          </li>
+          <li
+            className={styles.navItem}
+            onClick={() => {
+              updateState();
+            }}
+          >
+            <Anchor href="/festivalmap">Log In</Anchor>
           </li>
         </ul>
       </nav>

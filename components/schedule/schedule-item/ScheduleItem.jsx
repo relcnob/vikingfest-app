@@ -6,7 +6,17 @@ import s from "./ScheduleItem.module.css";
 
 function ScheduleItem({ act, user }) {
   // console.log(user);
-  const slug = act.act.trim().toLowerCase().split(" ").join("-").replace("/", "-").replace("'", "").replace("_", "").replace(",", "").replace("--", "-").replace("--", "-");
+  const slug = act.act
+    .trim()
+    .toLowerCase()
+    .split(" ")
+    .join("-")
+    .replace("/", "-")
+    .replace("'", "")
+    .replace("_", "")
+    .replace(",", "")
+    .replace("--", "-")
+    .replace("--", "-");
   const supabase = useSupabaseClient();
   const [watchlist, setWatchlist] = useState(null);
   const [isStarred, setIsStarred] = useState(false);
@@ -15,9 +25,13 @@ function ScheduleItem({ act, user }) {
   // Populate profileData
   useEffect(() => {
     async function getWatchlist() {
-      const { data, error } = await supabase.from("profiles").select("id, watchlist(bands)");
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("id, watchlist(bands)");
       if (!error) {
-        setWatchlist(data.filter((entry) => entry.id === user.id)[0].watchlist.bands);
+        setWatchlist(
+          data.filter((entry) => entry.id === user.id)[0].watchlist.bands
+        );
 
         // setIsStarred(profileData.watchlist.bands.includes(props.slug));
       } else {
@@ -106,7 +120,10 @@ function ScheduleItem({ act, user }) {
       <div>
         <h2 className={s.topText}>{act.act}</h2>
         <span className={s.bottomText}>
-          {act.stage} | {(Number(act.end.split(":")[0]) - Number(act.start.split(":")[0])) * 60} minutes
+          <em className={s[act.stage.toLowerCase()]}>{act.stage}</em> |&nbsp;
+          {(Number(act.end.split(":")[0]) - Number(act.start.split(":")[0])) *
+            60}{" "}
+          minutes
         </span>
       </div>
       <div className={`${s.specs} ${s[act.stage]}`}>
@@ -114,7 +131,10 @@ function ScheduleItem({ act, user }) {
         <span className={s.bottomText}>{act.start}</span>
       </div>
       {user && (
-        <div className={isStarred ? s.starYellow : s.starGrey} onClick={handleStar}>
+        <div
+          className={isStarred ? s.starYellow : s.starGrey}
+          onClick={handleStar}
+        >
           <Star />
         </div>
       )}
