@@ -88,6 +88,10 @@
   font-size: var(--type-h5);
 }
 
+.credits {
+  margin-top: var(--spacing-xs);
+  font-size: var(--type-label) !important;
+}
 /* genres */
 .Rock {
   color: var(--accent-orange-2);
