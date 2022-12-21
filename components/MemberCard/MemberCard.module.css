@@ -4,3 +4,9 @@
   align-items: center;
   gap: var(--spacing-xs);
 }
+.thumbnail {
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: 50%;
+  overflow: hidden;
+}
