@@ -3,12 +3,18 @@ import BurgerMenu from "../burger-menu/BurgerMenu";
 import ScheduleItem from "./schedule-item/ScheduleItem";
 import s from "./SchedulePage.module.css";
 import NavBar from "../nav-bar/NavBar";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
+
 function SchedulePage({ schedule, user, initialSession }) {
   const weekday = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
   const [chosenDay, setChosenDay] = useState(weekday[new Date().getDay()]);
   const [inDisplay, setInDisplay] = useState([]);
   const [currentStage, setCurrentStage] = useState("all");
+  const [watchlist, setWatchlist] = useState([]);
+  const [running, setRunning] = useState(false);
+  const [first, setFirst] = useState(true);
+  const supabase = useSupabaseClient();
 
   const stages = Object.keys(schedule);
   useEffect(() => {
@@ -40,6 +46,44 @@ function SchedulePage({ schedule, user, initialSession }) {
       );
     }
   }, [currentStage, chosenDay]);
+
+  // Update stars
+  useEffect(() => {
+    async function getWatchlist() {
+      const { data, error } = await supabase.from("profiles").select("id, watchlist(bands)");
+      if (!error) {
+        setWatchlist(data.filter((entry) => entry.id === user.id)[0].watchlist.bands);
+      } else {
+        console.log(error);
+      }
+    }
+    async function updateWatchlist() {
+      const { data, error } = await supabase.from("watchlist").update({ bands: watchlist }).eq("id", user.id);
+    }
+    if (user) {
+      if (first) {
+        getWatchlist();
+        setFirst(false);
+      } else if (running && !first) {
+        // Check is band is already in the watchlist
+        updateWatchlist();
+        setRunning(false);
+      }
+    }
+  }, [running]);
+
+  function addStar(slug) {
+    setWatchlist((old) => old.concat(slug));
+    setTimeout(() => {
+      setRunning(true);
+    }, 500);
+  }
+  function removeStar(slug) {
+    setWatchlist((old) => old.filter((item) => item !== slug));
+    setTimeout(() => {
+      setRunning(true);
+    }, 500);
+  }
   function handleStageFilter(stage) {
     if (stage !== currentStage) {
       setCurrentStage(stage);
@@ -56,10 +100,7 @@ function SchedulePage({ schedule, user, initialSession }) {
           <h1>Schedule</h1>
           <label>
             Select day of the week
-            <select
-              value={chosenDay}
-              onChange={(e) => setChosenDay(e.target.value)}
-            >
+            <select value={chosenDay} onChange={(e) => setChosenDay(e.target.value)}>
               <option value="mon">Monday</option>
               <option value="tue">Tuesday</option>
               <option value="wed">Wednesday</option>
@@ -71,24 +112,14 @@ function SchedulePage({ schedule, user, initialSession }) {
         </section>
         <section className={s.actList}>
           <ul>
-            {inDisplay.map(
-              (item) =>
-                item.act !== "break" && (
-                  <ScheduleItem act={item} key={item.act} user={user} />
-                )
-            )}
+            {inDisplay.map((item) => item.act !== "break" && <ScheduleItem act={item} key={item.act} user={user} watchlist={watchlist} addStar={addStar} removeStar={removeStar} running={running} />)}
           </ul>
         </section>
         <div className={s.stageFilters}>
           <ul>
             {stages.map((stage) => (
               <li key={stage}>
-                <button
-                  className={`${currentStage === stage ? s.active : ""} ${
-                    s[stage]
-                  }`}
-                  onClick={() => handleStageFilter(stage)}
-                >
+                <button className={`${currentStage === stage ? s.active : ""} ${s[stage]}`} onClick={() => handleStageFilter(stage)}>
                   {stage}
                 </button>
               </li>

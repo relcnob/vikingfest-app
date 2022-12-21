@@ -4,7 +4,11 @@ import WatchlistView from "../components/watchlist-view/WatchlistView";
 export default function watchlist({ user, bands, watchlist, schedule }) {
   // console.log(watchlist);
   // console.log(bands);
-  return <>{user ? <WatchlistView user={user} bands={bands} watchlist={watchlist} schedule={schedule} /> : <WatchlistRedirect />}</>;
+  return (
+    <>
+      <WatchlistView user={user} bands={bands} watchlist={watchlist} schedule={schedule} />
+    </>
+  );
 }
 
 export const getServerSideProps = async (ctx) => {
@@ -17,9 +21,9 @@ export const getServerSideProps = async (ctx) => {
   // Check if we have a session
   if (!session) {
     return {
-      props: {
-        initialSession: null,
-        user: null,
+      redirect: {
+        destination: "/signin",
+        permanent: false,
       },
     };
   } else {

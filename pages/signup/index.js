@@ -1,13 +1,15 @@
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import BurgerMenu from "../../components/burger-menu/BurgerMenu";
 import SignupForm from "../../components/forms/signup-form/SignupForm";
-import NavBar from "../../components/nav-bar/NavBar";
 
 function index() {
   return (
-    <div style={{ background: "var(--primary-300)" }}>
-      <SignupForm></SignupForm>
-    </div>
+    <>
+      <BurgerMenu></BurgerMenu>
+      <div style={{ background: "var(--primary-300)", paddingTop: "2rem", minHeight: "100vh" }}>
+        <SignupForm></SignupForm>
+      </div>
+    </>
   );
 }
 

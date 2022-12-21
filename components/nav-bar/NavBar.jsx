@@ -39,11 +39,11 @@ function NavBar(props) {
           <Image src={bandsIcon} alt="drum icon"></Image>
           <p>Bands</p>
         </Anchor>
-        <Anchor className={styles[scheduleClass]} href="schedule">
+        <Anchor className={styles[scheduleClass]} href="/schedule">
           <Image src={scheduleIcon} alt="schedule icon"></Image>
           <p>Schedule</p>
         </Anchor>
-        <Anchor className={styles[favoritesClass]} href="watchlist">
+        <Anchor className={styles[favoritesClass]} href="/watchlist">
           <Image src={favoritesIcon} alt="star icon"></Image>
           <p>Favorites</p>
         </Anchor>

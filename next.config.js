@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
 
   images: {
-    domains: ["localhost", "placeimg.com"],
+    domains: ["vikingfestserver.fly.dev", "placeimg.com"],
   },
 };
 
