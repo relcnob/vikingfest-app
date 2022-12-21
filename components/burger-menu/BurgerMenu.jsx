@@ -1,14 +1,14 @@
 import styles from "./BurgerMenu.module.css";
 import Anchor from "../Anchor";
 import { useState } from "react";
+import { useAuth } from "../../hooks/useAuth";
 
 function BurgerMenu() {
   const [menuState, setMenuState] = useState("inactive");
+  const { signOut, auth } = useAuth();
 
   function updateState() {
-    menuState === "inactive"
-      ? setMenuState("active")
-      : setMenuState("inactive");
+    menuState === "inactive" ? setMenuState("active") : setMenuState("inactive");
   }
 
   return (
@@ -66,7 +66,11 @@ function BurgerMenu() {
               updateState();
             }}
           >
-            <Anchor href="/festivalmap">Log Out</Anchor>
+            {auth && (
+              <button className={styles.logout} onClick={() => signOut()}>
+                Log out
+              </button>
+            )}
           </li>
           <li
             className={styles.navItem}
@@ -74,7 +78,7 @@ function BurgerMenu() {
               updateState();
             }}
           >
-            <Anchor href="/festivalmap">Log In</Anchor>
+            {!auth && <Anchor href="/signin">Log In</Anchor>}
           </li>
         </ul>
       </nav>

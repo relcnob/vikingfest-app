@@ -1,0 +1,7 @@
+.link {
+  color: var(--accent-orange);
+  transition: color 0.2s ease-in-out;
+}
+.link:hover {
+  color: var(--secondary-100);
+}

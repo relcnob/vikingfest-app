@@ -6,7 +6,18 @@
   z-index: 999;
   width: calc(100% - var(--spacing-m));
 }
-
+.logout {
+  border: none;
+  background-color: none;
+  background: none;
+  color: var(--secondary-100);
+  font-size: var(--type-big-body);
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+.logout:hover {
+  color: var(--accent-orange);
+}
 .burgerIcon {
   position: absolute;
   width: 32px;

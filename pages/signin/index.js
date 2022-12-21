@@ -1,12 +1,16 @@
 import React from "react";
 import SigninForm from "../../components/forms/signin-form/SigninForm";
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import BurgerMenu from "../../components/burger-menu/BurgerMenu";
 
 function index({ user }) {
   return (
-    <div style={{ background: "var(--primary-300)" }}>
-      <SigninForm />
-    </div>
+    <>
+      <BurgerMenu></BurgerMenu>
+      <div style={{ background: "var(--primary-300)", paddingTop: "2rem", minHeight: "100vh" }}>
+        <SigninForm />
+      </div>
+    </>
   );
 }
 
@@ -25,7 +29,7 @@ export const getServerSideProps = async (ctx) => {
   } else {
     return {
       redirect: {
-        destination: "/",
+        destination: "/schedule",
         permanent: false,
       },
     };

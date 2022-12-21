@@ -3,18 +3,10 @@ import { useSessionContext } from "@supabase/auth-helpers-react";
 import { useContext } from "react";
 import BandSingleView from "../../components/band-single-view/BandSingleView";
 
-function SingleBandPage(props) {
+function singleBandPage(props) {
   return (
     <>
-      <BandSingleView
-        user={props.user}
-        bandName={props.data.name}
-        genre={props.data.genre}
-        description={props.data.bio}
-        members={props.data.members}
-        slug={props.slug}
-        logo={props.data.logo}
-      />
+      <BandSingleView user={props.user} bandName={props.data.name} genre={props.data.genre} description={props.data.bio} members={props.data.members} slug={props.slug} logo={props.data.logo} />
     </>
   );
 }
@@ -23,7 +15,7 @@ export async function getServerSideProps(context) {
   const supabase = createServerSupabaseClient(context);
   // Check if we have a session
   const slug = context.params.slug;
-  const res = await fetch("http://localhost:8080/bands");
+  const res = await fetch("https://vikingfestserver.fly.dev/bands");
   if (res.status !== 200) {
     return {
       notFound: true,
@@ -39,6 +31,9 @@ export async function getServerSideProps(context) {
     return {
       props: {
         data: band[0],
+        initialSession: null,
+        user: null,
+        slug: slug,
       },
     };
   }
@@ -53,4 +48,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default SingleBandPage;
+export default singleBandPage;
