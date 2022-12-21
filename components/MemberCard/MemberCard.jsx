@@ -6,7 +6,7 @@ import memberPlaceholder from "../../public/memberPlaceholder.png";
 function MemberCard(props) {
   return (
     <article className={styles.memberCard}>
-      <Image alt="picture of member" src={memberPlaceholder} />
+      <Image alt="picture of member" src={"https://source.unsplash.com/60x60/?portrait"} width={60} height={60} className={styles.thumbnail} />
       <h4>
         {"<- "}
         {props.member}

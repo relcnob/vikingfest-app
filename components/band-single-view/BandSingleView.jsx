@@ -100,6 +100,8 @@ function BandSingleView(props) {
             <Anchor href="/bands" className={styles.backbutton}>
               {"<-"}
             </Anchor>
+
+            <Image alt="profile" className={styles.BandImage} src={props.logo.includes("http") ? props.logo : `${serverUrl}/logos/${props.logo}`} width="250" height="250" />
             <Image
               alt=""
               className={styles.BandImage}
