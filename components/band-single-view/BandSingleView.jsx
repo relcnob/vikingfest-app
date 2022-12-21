@@ -20,13 +20,9 @@ function BandSingleView(props) {
   // Populate profileData
   useEffect(() => {
     async function getWatchlist() {
-      const { data, error } = await supabase
-        .from("profiles")
-        .select("id, watchlist(bands)");
+      const { data, error } = await supabase.from("profiles").select("id, watchlist(bands)");
       if (!error) {
-        setWatchlist(
-          data.filter((entry) => entry.id === user.id)[0].watchlist.bands
-        );
+        setWatchlist(data.filter((entry) => entry.id === user.id)[0].watchlist.bands);
 
         // setIsStarred(profileData.watchlist.bands.includes(props.slug));
       } else {
@@ -102,26 +98,12 @@ function BandSingleView(props) {
             </Anchor>
 
             <Image alt="profile" className={styles.BandImage} src={props.logo.includes("http") ? props.logo : `${serverUrl}/logos/${props.logo}`} width="250" height="250" />
-            <Image
-              alt=""
-              className={styles.BandImage}
-              src={
-                props.logo.includes("http")
-                  ? props.logo
-                  : `${serverUrl}/logos/${props.logo}`
-              }
-              width="250"
-              height="250"
-            />
           </div>
           <div>
             <div className={styles.title}>
               <h1>{props.bandName}</h1>
               {props.user && (
-                <div
-                  className={isStarred ? styles.starYellow : styles.starGrey}
-                  onClick={handleStar}
-                >
+                <div className={isStarred ? styles.starYellow : styles.starGrey} onClick={handleStar}>
                   {" "}
                   <Star />{" "}
                 </div>
@@ -130,11 +112,7 @@ function BandSingleView(props) {
             <section className={styles.description}>
               <h2 className={`${styles[props.genre]}`}>{props.genre}</h2>
               <p>{props.description}</p>
-              {props.credits != undefined ? (
-                <p className={styles.credits}>Logo credits: {props.credits}</p>
-              ) : (
-                ""
-              )}
+              {props.credits != undefined ? <p className={styles.credits}>Logo credits: {props.credits}</p> : ""}
             </section>
           </div>
           <section className={styles.memberList}>
