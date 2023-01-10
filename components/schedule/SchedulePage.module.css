@@ -26,6 +26,10 @@
   padding-left: 1rem;
 }
 
+.header h1 {
+  margin-top: var(--spacing-l);
+}
+
 .actList {
   padding-block: var(--spacing-s);
   max-height: 70vh;

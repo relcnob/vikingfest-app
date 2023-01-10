@@ -11,6 +11,10 @@
   position: relative;
 }
 
+.list::-webkit-scrollbar {
+  width: 0 !important;
+}
+
 .header {
   font-size: var(--type-h4);
   color: var(--accent-orange);
@@ -39,4 +43,5 @@
   padding: var(--spacing-3xs);
   box-sizing: border-box;
   transform-origin: center;
+  margin-bottom: 2rem;
 }
