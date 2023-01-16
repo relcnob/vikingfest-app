@@ -3,12 +3,18 @@ import SchedulePage from "../components/schedule/SchedulePage";
 export default function schedule(props) {
   return (
     <>
-      <SchedulePage schedule={props.schedule} user={props.user} initialSession={props.initialSession} />
+      <SchedulePage
+        schedule={props.schedule}
+        user={props.user}
+        initialSession={props.initialSession}
+      />
     </>
   );
 }
 export const getServerSideProps = async (ctx) => {
-  const scheduleResponse = await fetch(process.env.SERVER_URL + "schedule");
+  const scheduleResponse = await fetch(
+    "https://vikingfestserver.fly.dev/schedule"
+  );
   const schedule = await scheduleResponse.json();
   //   console.log(schedule);
 
