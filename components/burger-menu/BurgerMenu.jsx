@@ -8,7 +8,9 @@ function BurgerMenu() {
   const { signOut, auth } = useAuth();
 
   function updateState() {
-    menuState === "inactive" ? setMenuState("active") : setMenuState("inactive");
+    menuState === "inactive"
+      ? setMenuState("active")
+      : setMenuState("inactive");
   }
 
   return (
@@ -43,6 +45,14 @@ function BurgerMenu() {
             }}
           >
             <Anchor href="/bands">Bands</Anchor>
+          </li>
+          <li
+            className={styles.navItem}
+            onClick={() => {
+              updateState();
+            }}
+          >
+            <Anchor href="/watchlist">Favourites</Anchor>
           </li>
           <li
             className={styles.navItem}

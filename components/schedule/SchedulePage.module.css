@@ -26,9 +26,13 @@
   padding-left: 1rem;
 }
 
+.header h1 {
+  margin-top: var(--spacing-l);
+}
+
 .actList {
   padding-block: var(--spacing-s);
-  max-height: 70vh;
+  max-height: 55vh;
   overflow-y: auto;
 }
 .actList ul {
@@ -46,7 +50,7 @@
 .stageFilters ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-2xs);
+  gap: var(--spacing-s);
   max-width: 900px;
   margin-inline: auto;
 }
@@ -75,6 +79,21 @@
 @media only screen and (min-width: 768px) {
   .header {
     margin-top: var(--spacing-l);
+  }
+  .stageFilters {
+    position: fixed;
+    inset: auto 0 0;
+    background-color: var(--primary-100);
+    padding-inline: 1rem;
+    padding-block: var(--spacing-s);
+  }
+  .actList {
+    padding-block: var(--spacing-s);
+    max-height: 58vh;
+    overflow-y: auto;
+  }
+  .page {
+    padding-bottom: 3rem;
   }
 }
 
