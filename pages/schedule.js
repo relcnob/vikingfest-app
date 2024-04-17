@@ -13,7 +13,7 @@ export default function schedule(props) {
 }
 export const getServerSideProps = async (ctx) => {
   const scheduleResponse = await fetch(
-    "https://vikingfestserver.fly.dev/schedule"
+    "https://vikingfest-api.onrender.com/schedule"
   );
   const schedule = await scheduleResponse.json();
   //   console.log(schedule);

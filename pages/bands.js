@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 function Bands() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("https://vikingfestserver.fly.dev/bands")
+    fetch("https://vikingfest-api.onrender.com/bands")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
