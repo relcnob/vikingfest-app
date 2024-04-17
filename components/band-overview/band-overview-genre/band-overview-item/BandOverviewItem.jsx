@@ -7,7 +7,9 @@ function BandOverviewItem(props) {
 
   const getImage = () => {
     if (props.logo.includes("placeimg")) {
-      return "https://via.assets.so/album.png?id=1&q=95&w=360&h=360&fit=fill";
+      return `https://via.assets.so/album.png?id=${Math.floor(
+        Math.random() * 64 + 1
+      )}&q=95&w=360&h=360&fit=fill`;
     } else {
       return props.logo.includes("http")
         ? props.logo

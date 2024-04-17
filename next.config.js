@@ -7,6 +7,7 @@ const nextConfig = {
       "vikingfest-api.onrender.com",
       "placeimg.com",
       "source.unsplash.com",
+      "via.assets.so",
     ],
   },
 };
